@@ -5,14 +5,9 @@ Bir oyun yazmak istiyorsunuz. Bu yazılım için backend kodlarını JAVA ile ge
 
 Gereksinimler
 
-1.     Oyuncuların sisteme kayıt olabileceği, bilgilerini güncelleyebileceği, 
-2.     kayıtlarını silebileceği bir ortamı simule ediniz. Müşteri bilgilerinin 
-3.     doğruluğunu e-devlet sistemlerini kullanarak doğrulama yapmak istiyoruz. 
-4.     (E-devlet sistemlerinde doğrulama TcNo, Ad, Soyad, DoğumYılı bilgileriyle yapılır. 
-5.     Bunu yapacak servisi simule etmeniz yeterlidir.) (Loglama gibi)
+1.     Oyuncuların sisteme kayıt olabileceği, bilgilerini güncelleyebileceği, kayıtlarını silebileceği bir ortamı simule ediniz. Müşteri bilgilerinin doğruluğunu e-devlet sistemlerini kullanarak doğrulama yapmak istiyoruz. (E-devlet sistemlerinde doğrulama TcNo, Ad, Soyad, DoğumYılı bilgileriyle yapılır. Bunu yapacak servisi simule etmeniz yeterlidir.) (Loglama gibi)
 
-2.     Oyun satışı yapılabilecek satış ortamını simule ediniz.( Yapılan satışlar oyuncu ile 
-3.     ilişkilendirilmelidir. Oyuncunun parametre olarak metotta olmasını kastediyorum.)
+2.     Oyun satışı yapılabilecek satış ortamını simule ediniz.( Yapılan satışlar oyuncu ile ilişkilendirilmelidir. Oyuncunun parametre olarak metotta olmasını kastediyorum.)
 
 3.     Sisteme yeni kampanya girişi, kampanyanın silinmesi ve güncellenmesi imkanlarını simule ediniz.
 
