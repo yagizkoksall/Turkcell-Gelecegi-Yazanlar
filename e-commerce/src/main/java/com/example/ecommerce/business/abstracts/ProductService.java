@@ -1,6 +1,6 @@
 package com.example.ecommerce.business.abstracts;
 
-import com.example.ecommerce.entities.concretes.Product;
+import com.example.ecommerce.entities.Product;
 
 import java.util.List;
 

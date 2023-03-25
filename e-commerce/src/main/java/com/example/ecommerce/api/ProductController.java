@@ -1,7 +1,7 @@
 package com.example.ecommerce.api;
 
 import com.example.ecommerce.business.abstracts.ProductService;
-import com.example.ecommerce.entities.concretes.Product;
+import com.example.ecommerce.entities.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
