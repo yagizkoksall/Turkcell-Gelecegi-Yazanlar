@@ -6,22 +6,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "brands")
-public class Brand {
-    @Id // Primary Key -> PK
+@Table(name = "cars")
+public class Car {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
+    private int modelYear;
+    private String plate;
+    private int state;
+    private double dailyPrice;
 
-    @OneToMany(mappedBy = "brand")
-    private List<Model> models;
-
+    @ManyToOne
+    @JoinColumn(name = "model_id")
+    private Model model;
 }
-
