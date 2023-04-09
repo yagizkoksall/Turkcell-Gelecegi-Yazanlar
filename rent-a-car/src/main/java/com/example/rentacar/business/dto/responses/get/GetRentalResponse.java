@@ -1,19 +1,21 @@
 package com.example.rentacar.business.dto.responses.get;
 
-import com.example.rentacar.entities.Model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetAllBrandsResponse {
+public class GetRentalResponse {
     private int id;
-    private String name;
-//    private List<GetAllModelsResponse> getAllModelsResponses;
+    private int carId;
+    private double dailyPrice;
+    private int rentedForDays;
+    private double totalPrice;
+    private LocalDateTime startDate;
 }

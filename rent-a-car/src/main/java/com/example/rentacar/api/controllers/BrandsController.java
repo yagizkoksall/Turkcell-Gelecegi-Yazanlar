@@ -7,7 +7,6 @@ import com.example.rentacar.business.dto.responses.create.CreateBrandResponse;
 import com.example.rentacar.business.dto.responses.get.GetAllBrandsResponse;
 import com.example.rentacar.business.dto.responses.get.GetBrandResponse;
 import com.example.rentacar.business.dto.responses.update.UpdateBrandResponse;
-import com.example.rentacar.entities.Brand;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
