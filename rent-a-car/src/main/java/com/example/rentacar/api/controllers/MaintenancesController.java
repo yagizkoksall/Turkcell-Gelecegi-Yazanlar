@@ -4,7 +4,7 @@ import com.example.rentacar.business.abstracts.MaintenanceService;
 import com.example.rentacar.business.dto.requests.create.CreateMaintenanceRequest;
 import com.example.rentacar.business.dto.requests.update.UpdateMaintenanceRequest;
 import com.example.rentacar.business.dto.responses.create.CreateMaintenanceResponse;
-import com.example.rentacar.business.dto.responses.get.GetAllMaintenanceResponse;
+import com.example.rentacar.business.dto.responses.get.GetAllMaintenancesResponse;
 import com.example.rentacar.business.dto.responses.get.GetMaintenanceResponse;
 import com.example.rentacar.business.dto.responses.update.UpdateMaintenanceResponse;
 import lombok.AllArgsConstructor;
@@ -20,7 +20,7 @@ public class MaintenancesController {
     private final MaintenanceService service;
 
     @GetMapping
-    public List<GetAllMaintenanceResponse> getAll(){
+    public List<GetAllMaintenancesResponse> getAll(){
        return service.getAll();
     }
 

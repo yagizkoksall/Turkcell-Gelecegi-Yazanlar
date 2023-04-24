@@ -1,23 +1,25 @@
 package com.example.rentacar.business.dto.responses.get;
 
-import com.example.rentacar.entities.Model;
-import com.example.rentacar.entities.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetCarResponse {
+public class GetAllInvoicesResponse {
     private int id;
-    private int modelId;
-    private int modelYear;
-    private String plate;
-    private State state;
-    private double dailyPrice;
+    private String cardHolder;
     private String modelName;
     private String brandName;
+    private String plate;
+    private int modelYear;
+    private double dailyPrice;
+    private double totalPrice;
+    private int rentedForDays;
+    private LocalDateTime rentedAt;
 }

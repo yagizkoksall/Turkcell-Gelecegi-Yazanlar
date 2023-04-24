@@ -6,7 +6,7 @@ import com.example.rentacar.business.dto.responses.create.CreatePaymentResponse;
 import com.example.rentacar.business.dto.responses.get.GetAllPaymentsResponse;
 import com.example.rentacar.business.dto.responses.get.GetPaymentResponse;
 import com.example.rentacar.business.dto.responses.update.UpdatePaymentResponse;
-import com.example.rentacar.core.dto.CreateRentalPaymentRequest;
+import com.example.rentacar.common.dto.CreateRentalPaymentRequest;
 
 import java.util.List;
 

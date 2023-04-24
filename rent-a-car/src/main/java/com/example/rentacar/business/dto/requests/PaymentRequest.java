@@ -16,6 +16,7 @@ import org.hibernate.validator.constraints.Length;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class PaymentRequest {
     @NotBlank(message = "Kart numarası alanı boş bırakılamaz.")
     @Length(min = 16, max = 16, message = "Kart numarası 16 haneden oluşmalıdır.")
@@ -33,8 +34,8 @@ public class PaymentRequest {
     @Min(value = 1)
     private int cardExpirationMonth; // 1 ile 12
 
-    @NotBlank
-    @Length(min = 3,max = 3)
+    @NotBlank(message = "Cvv bilgisi boş bırakılamaz")
+    @Length(min = 3,max = 3,message = "Cvv numarası 3 haneli olmalıdır.")
     private String cardCvv; // 3 haneli olmalı
 
 
