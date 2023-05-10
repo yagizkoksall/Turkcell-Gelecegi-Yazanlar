@@ -1,0 +1,8 @@
+
+g	java:S112 "FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8€ßÅÇû0
+b
+java:S2095"EUse try-with-resources or close this "Scanner" in a "finally" clause.(©ºì8–ßÅÇû0
+U	java:S106"9Replace this use of System.out or System.err by a logger.(‰Ü¬Ó8šßÅÇû0
+^
+java:S1075"ARefactor your code to get this URI from a customizable parameter.(©ºì8ßÅÇû0
+U	java:S106;"9Replace this use of System.out or System.err by a logger.(…µê‡8 ßÅÇû0

@@ -7,6 +7,7 @@ import com.example.rentacar.business.dto.responses.create.CreateCarResponse;
 import com.example.rentacar.business.dto.responses.get.GetAllCarsResponse;
 import com.example.rentacar.business.dto.responses.get.GetCarResponse;
 import com.example.rentacar.business.dto.responses.update.UpdateCarResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class CarsController {
     }
 
     @PostMapping
-    public CreateCarResponse add(@RequestBody CreateCarRequest request){
+    public CreateCarResponse add(@Valid @RequestBody CreateCarRequest request){
         return service.add(request);
     }
 

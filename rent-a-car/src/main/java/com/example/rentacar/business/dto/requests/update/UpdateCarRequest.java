@@ -1,6 +1,5 @@
 package com.example.rentacar.business.dto.requests.update;
 
-import com.example.rentacar.entities.Model;
 import com.example.rentacar.entities.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
