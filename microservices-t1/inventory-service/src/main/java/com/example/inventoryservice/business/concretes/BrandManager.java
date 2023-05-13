@@ -11,7 +11,7 @@ import com.example.inventoryservice.business.dto.responses.get.GetBrandResponse;
 import com.example.inventoryservice.business.dto.responses.update.UpdateBrandResponse;
 import com.example.inventoryservice.business.rules.BrandBusinessRules;
 import com.example.inventoryservice.entities.Brand;
-import com.example.inventoryservice.kafka.producer.InventoryProducer;
+import com.example.inventoryservice.business.kafka.producer.InventoryProducer;
 import com.example.inventoryservice.repository.BrandRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

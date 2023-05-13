@@ -1,4 +1,4 @@
-package com.example.filterservice.kafka.consumer;
+package com.example.filterservice.business.kafka.consumer;
 
 import com.example.commonpackage.events.inventory.BrandDeletedEvent;
 import com.example.commonpackage.events.inventory.CarCreatedEvent;

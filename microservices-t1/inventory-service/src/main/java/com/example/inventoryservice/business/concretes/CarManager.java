@@ -13,7 +13,7 @@ import com.example.inventoryservice.business.dto.responses.update.UpdateCarRespo
 import com.example.inventoryservice.business.rules.CarBusinessRules;
 import com.example.inventoryservice.entities.Car;
 import com.example.inventoryservice.entities.enums.State;
-import com.example.inventoryservice.kafka.producer.InventoryProducer;
+import com.example.inventoryservice.business.kafka.producer.InventoryProducer;
 import com.example.inventoryservice.repository.CarRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -57,9 +57,7 @@ public class CarManager implements CarService {
         var createdCar = repository.save(car);
 
         // CarCreatedEvent
-        var event = mapper.forResponse().map(createdCar, CarCreatedEvent.class);
-        producer.sendMessage(event);
-
+        sendKafkaCarCreatedEvent(createdCar);
         var response = mapper.forResponse().map(createdCar, CreateCarResponse.class);
 
         return response;
@@ -80,6 +78,26 @@ public class CarManager implements CarService {
     public void delete(UUID id) {
         rules.checkIfCarExists(id);
         repository.deleteById(id);
+        sendKafkaCarDeletedEvent(id);
+    }
+
+    @Override
+    public void checkIfCarAvailable(UUID id) {
+        rules.checkIfCarExists(id);
+        rules.checkCarAvailability(id);
+    }
+
+    @Override
+    public void changeStateByCarId(State state, UUID id) {
+
+    }
+
+    private void sendKafkaCarCreatedEvent(Car createdCar){
+        var event = mapper.forResponse().map(createdCar, CarCreatedEvent.class);
+        producer.sendMessage(event);
+    }
+
+    private void sendKafkaCarDeletedEvent(UUID id){
         producer.sendMessage(new CarDeletedEvent(id));
     }
 }

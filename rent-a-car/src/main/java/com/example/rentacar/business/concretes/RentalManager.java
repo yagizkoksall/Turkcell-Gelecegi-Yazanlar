@@ -56,6 +56,7 @@ public class RentalManager implements RentalService {
 
     @Override
     public CreateRentalResponse add(CreateRentalRequest request) {
+
         rules.checkIfCarAvailable(carService.getById(request.getCarId()).getState());
         Rental rental = mapper.map(request, Rental.class);
         rental.setId(0);
