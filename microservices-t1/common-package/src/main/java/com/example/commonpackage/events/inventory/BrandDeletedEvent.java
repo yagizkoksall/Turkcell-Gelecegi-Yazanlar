@@ -1,5 +1,6 @@
 package com.example.commonpackage.events.inventory;
 
+import com.example.commonpackage.events.Event;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,6 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class BrandDeletedEvent {
+public class BrandDeletedEvent implements Event {
     private UUID brandId;
 }

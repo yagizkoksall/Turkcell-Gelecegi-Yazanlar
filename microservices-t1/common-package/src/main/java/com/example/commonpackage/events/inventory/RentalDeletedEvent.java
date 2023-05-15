@@ -12,14 +12,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CarCreatedEvent implements Event {
+public class RentalDeletedEvent implements Event {
     private UUID carId;
-    private UUID modelId;
-    private UUID brandId;
-    private String modelName;
-    private String brandName;
-    private String plate;
-    private int modelYear;
-    private double dailyPrice;
-    private String state;
+
 }

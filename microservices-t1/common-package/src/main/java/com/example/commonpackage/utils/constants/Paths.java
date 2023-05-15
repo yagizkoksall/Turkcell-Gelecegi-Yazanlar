@@ -13,4 +13,7 @@ public class Paths {
     public static final class Rental{
         public static final String ServiceBasePackage = "com.example.rentalservice";
     }
+    public static final class Payment{
+        public static final String ServiceBasePackage = "com.example.paymentservice";
+    }
 }

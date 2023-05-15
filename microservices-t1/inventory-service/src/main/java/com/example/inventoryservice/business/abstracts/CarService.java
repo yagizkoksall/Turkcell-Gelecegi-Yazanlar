@@ -1,5 +1,6 @@
 package com.example.inventoryservice.business.abstracts;
 
+import com.example.commonpackage.utils.dto.ClientResponse;
 import com.example.inventoryservice.business.dto.requests.create.CreateCarRequest;
 import com.example.inventoryservice.business.dto.requests.update.UpdateCarRequest;
 import com.example.inventoryservice.business.dto.responses.create.CreateCarResponse;
@@ -18,6 +19,6 @@ public interface CarService {
     CreateCarResponse add(CreateCarRequest request);
     UpdateCarResponse update(UUID id, UpdateCarRequest request);
     void delete(UUID id);
-    void checkIfCarAvailable(UUID id);
+    ClientResponse checkIfCarAvailable(UUID id);
     void changeStateByCarId(State state,UUID id);
 }

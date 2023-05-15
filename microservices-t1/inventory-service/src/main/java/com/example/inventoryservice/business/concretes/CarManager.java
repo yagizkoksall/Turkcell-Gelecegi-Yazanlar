@@ -2,6 +2,9 @@ package com.example.inventoryservice.business.concretes;
 
 import com.example.commonpackage.events.inventory.CarCreatedEvent;
 import com.example.commonpackage.events.inventory.CarDeletedEvent;
+import com.example.commonpackage.utils.dto.ClientResponse;
+import com.example.commonpackage.utils.exceptions.BusinessException;
+import com.example.commonpackage.utils.kafka.producer.KafkaProducer;
 import com.example.commonpackage.utils.mappers.ModelMapperService;
 import com.example.inventoryservice.business.abstracts.CarService;
 import com.example.inventoryservice.business.dto.requests.create.CreateCarRequest;
@@ -13,7 +16,6 @@ import com.example.inventoryservice.business.dto.responses.update.UpdateCarRespo
 import com.example.inventoryservice.business.rules.CarBusinessRules;
 import com.example.inventoryservice.entities.Car;
 import com.example.inventoryservice.entities.enums.State;
-import com.example.inventoryservice.business.kafka.producer.InventoryProducer;
 import com.example.inventoryservice.repository.CarRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,7 @@ public class CarManager implements CarService {
     private final CarRepository repository;
     private final ModelMapperService mapper;
     private final CarBusinessRules rules;
-    private final InventoryProducer producer;
+    private final KafkaProducer producer;
 
     @Override
     public List<GetAllCarsResponse> getAll() {
@@ -82,9 +84,21 @@ public class CarManager implements CarService {
     }
 
     @Override
-    public void checkIfCarAvailable(UUID id) {
+    public ClientResponse checkIfCarAvailable(UUID id) {
+        var response = new ClientResponse();
+        validateCarAvailability(id, response);
+        return response;
+    }
+
+    private void validateCarAvailability(UUID id, ClientResponse response) {
+        try{
         rules.checkIfCarExists(id);
         rules.checkCarAvailability(id);
+        response.setSuccess(true);
+        }   catch (BusinessException exception){
+            response.setSuccess(false);
+            response.setMessage(exception.getMessage());
+        }
     }
 
     @Override
@@ -94,10 +108,10 @@ public class CarManager implements CarService {
 
     private void sendKafkaCarCreatedEvent(Car createdCar){
         var event = mapper.forResponse().map(createdCar, CarCreatedEvent.class);
-        producer.sendMessage(event);
+        producer.sendMessage(event,"car-created");
     }
 
     private void sendKafkaCarDeletedEvent(UUID id){
-        producer.sendMessage(new CarDeletedEvent(id));
+        producer.sendMessage(new CarDeletedEvent(id),"car-deleted");
     }
 }

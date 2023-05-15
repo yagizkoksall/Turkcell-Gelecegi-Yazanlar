@@ -1,6 +1,7 @@
 package com.example.inventoryservice.business.concretes;
 
 import com.example.commonpackage.events.inventory.BrandDeletedEvent;
+import com.example.commonpackage.utils.kafka.producer.KafkaProducer;
 import com.example.commonpackage.utils.mappers.ModelMapperService;
 import com.example.inventoryservice.business.abstracts.BrandService;
 import com.example.inventoryservice.business.dto.requests.create.CreateBrandRequest;
@@ -11,7 +12,6 @@ import com.example.inventoryservice.business.dto.responses.get.GetBrandResponse;
 import com.example.inventoryservice.business.dto.responses.update.UpdateBrandResponse;
 import com.example.inventoryservice.business.rules.BrandBusinessRules;
 import com.example.inventoryservice.entities.Brand;
-import com.example.inventoryservice.business.kafka.producer.InventoryProducer;
 import com.example.inventoryservice.repository.BrandRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,7 @@ public class BrandManager implements BrandService {
     private final BrandRepository repository;
     private final ModelMapperService mapper;
     private final BrandBusinessRules rules;
-    private final InventoryProducer producer;
+    private final KafkaProducer producer;
 
     @Override
     public List<GetAllBrandsResponse> getAll() {
@@ -71,6 +71,6 @@ public class BrandManager implements BrandService {
     public void delete(UUID id) {
         rules.checkIfBrandExists(id);
         repository.deleteById(id);
-        producer.sendMessage(new BrandDeletedEvent(id));
+        producer.sendMessage(new BrandDeletedEvent(id),"brand-deleted");
     }
 }
