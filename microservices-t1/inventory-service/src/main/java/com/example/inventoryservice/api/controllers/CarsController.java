@@ -10,6 +10,7 @@ import com.example.inventoryservice.business.dto.responses.get.GetCarResponse;
 import com.example.inventoryservice.business.dto.responses.update.UpdateCarResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +23,7 @@ import java.util.UUID;
 @RequestMapping("/api/cars")
 public class CarsController {
     private final CarService service;
+
 
     @GetMapping
     public List<GetAllCarsResponse> getAll() {
@@ -52,7 +54,7 @@ public class CarsController {
 
 
     @GetMapping("/check-car-available/{id}")
-    public ClientResponse checkIfCarAvailable(@PathVariable UUID id){
-       return service.checkIfCarAvailable(id);
+    public ClientResponse checkIfCarAvailable(@PathVariable UUID id) {
+        return service.checkIfCarAvailable(id);
     }
 }

@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class GetCarResponse {
     private UUID id;
-    private int modelId;
+    private UUID modelId;
     private int modelYear;
     private String plate;
     private State state;

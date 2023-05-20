@@ -12,7 +12,6 @@ import java.util.UUID;
 @Component
 public class CarClientFallback implements CarClient {
     @Override
-    @Retry(name="retry-rental")
     public ClientResponse checkIfCarAvailable(UUID carId) {
         throw new RuntimeException("INVENTORY SERVICE IS DOWN!");
     }

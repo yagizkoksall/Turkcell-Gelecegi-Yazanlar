@@ -5,7 +5,6 @@ import com.example.commonpackage.events.inventory.RentalCreatedEvent;
 import com.example.commonpackage.events.inventory.RentalDeletedEvent;
 import com.example.commonpackage.utils.kafka.producer.KafkaProducer;
 import com.example.commonpackage.utils.mappers.ModelMapperService;
-import com.example.rentalservice.api.clients.CarClient;
 import com.example.rentalservice.business.abstracts.RentalService;
 import com.example.rentalservice.business.dto.requests.CreateRentalRequest;
 import com.example.rentalservice.business.dto.requests.UpdateRentalRequest;

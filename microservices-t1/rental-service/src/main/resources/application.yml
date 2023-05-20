@@ -37,5 +37,5 @@ resilience4j:
     instances:
       retry-rental:
         max-attempts: 5
-        wait-duration: 10s
+        wait-duration: 30s
 
