@@ -13,7 +13,7 @@ public class FakePosServiceAdapter implements PosService {
 
     @Override
     public void pay() {
-        boolean isPaymentSuccessful = new Random().nextBoolean();
+        boolean isPaymentSuccessful = true;
         if(!isPaymentSuccessful) throw new BusinessException(Messages.Payment.Failed);
     }
 }

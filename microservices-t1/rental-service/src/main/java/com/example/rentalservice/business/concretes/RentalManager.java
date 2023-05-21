@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -54,9 +55,7 @@ public class RentalManager implements RentalService {
     @Override
     public CreateRentalResponse add(CreateRentalRequest request) {
         rules.ensureCarIsAvailable(request.getCarId());
-        // PAYMENT
         // * araç müsait mi değil mi kontrol - id
-
         rules.processRentalPayment(request.getRentalPaymentRequest());
         var rental = mapper.forRequest().map(request, Rental.class);
         rental.setId(UUID.randomUUID());

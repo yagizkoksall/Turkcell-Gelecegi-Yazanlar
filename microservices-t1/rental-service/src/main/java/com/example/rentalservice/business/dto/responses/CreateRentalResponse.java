@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -19,5 +20,5 @@ public class CreateRentalResponse {
     private double dailyPrice;
     private int rentedForDays;
     private double totalPrice;
-    private LocalDateTime startDate;
+    private LocalDate rentedAt;
 }
