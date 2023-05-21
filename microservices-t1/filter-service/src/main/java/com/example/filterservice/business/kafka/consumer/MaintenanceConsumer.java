@@ -1,5 +1,7 @@
 package com.example.filterservice.business.kafka.consumer;
 
+import com.example.commonpackage.events.inventory.MaintenanceCreatedEvent;
+import com.example.commonpackage.events.inventory.MaintenanceDeletedEvent;
 import com.example.commonpackage.events.inventory.RentalCreatedEvent;
 import com.example.commonpackage.events.inventory.RentalDeletedEvent;
 import com.example.filterservice.business.abstracts.FilterService;
@@ -19,7 +21,7 @@ public class MaintenanceConsumer {
             topics = "maintenance-created",
             groupId = "filter-maintenance-create"
     )
-    public void consume(RentalCreatedEvent event) {
+    public void consume(MaintenanceCreatedEvent event) {
         // changer car state
         var filter = service.getByCarId(event.getCarId());
         filter.setState("MAINTENANCE");
@@ -30,7 +32,7 @@ public class MaintenanceConsumer {
             topics = "maintenance-deleted",
             groupId = "filter-maintenance-delete"
     )
-    public void consume(RentalDeletedEvent event) {
+    public void consume(MaintenanceDeletedEvent event) {
         // changer car state
         var filter = service.getByCarId(event.getCarId());
         filter.setState("AVAILABLE");

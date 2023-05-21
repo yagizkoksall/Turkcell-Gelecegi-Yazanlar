@@ -35,7 +35,11 @@ server:
 resilience4j:
   retry:
     instances:
+      retry-payment:
+        max-attempts: 3
+        wait-duration: 20s
       retry-rental:
         max-attempts: 5
         wait-duration: 30s
+
 

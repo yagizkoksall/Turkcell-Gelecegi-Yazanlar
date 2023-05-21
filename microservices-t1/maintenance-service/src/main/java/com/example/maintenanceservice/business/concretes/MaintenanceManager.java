@@ -75,6 +75,9 @@ public class MaintenanceManager implements MaintenanceService {
         maintenance.setEndDate(null);
         repository.save(maintenance);
       // -  carService.changeState(request.getCarId(), State.MAINTENANCE);
+
+        sendKafkaMaintenanceCreatedEvent(request.getCarId());
+
         CreateMaintenanceResponse response = mapper.forResponse().map(maintenance, CreateMaintenanceResponse.class);
 
         return response;
@@ -97,15 +100,17 @@ public class MaintenanceManager implements MaintenanceService {
         rules.checkIfMaintenanceExists(id);
         makeCarAvailableIfIsCompletedFalse(id);
 
+        var carId = repository.findById(id).orElseThrow().getCarId();
+        sendKafkaMaintenanceDeletedEvent(carId);
         repository.deleteById(id);
     }
 
     private void sendKafkaMaintenanceCreatedEvent(UUID carId){
-        producer.sendMessage(new MaintenanceCreatedEvent(carId),"maintenance-created-event");
+        producer.sendMessage(new MaintenanceCreatedEvent(carId),"maintenance-created");
     }
 
     private void sendKafkaMaintenanceDeletedEvent(UUID carId){
-        producer.sendMessage(new MaintenanceDeletedEvent(carId),"maintenance-deleted-event");
+        producer.sendMessage(new MaintenanceDeletedEvent(carId),"maintenance-deleted");
     }
 
 

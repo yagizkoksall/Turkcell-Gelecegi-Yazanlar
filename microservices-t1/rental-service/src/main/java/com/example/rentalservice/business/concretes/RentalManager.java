@@ -54,7 +54,10 @@ public class RentalManager implements RentalService {
     @Override
     public CreateRentalResponse add(CreateRentalRequest request) {
         rules.ensureCarIsAvailable(request.getCarId());
+        // PAYMENT
         // * araç müsait mi değil mi kontrol - id
+
+        rules.processRentalPayment(request.getRentalPaymentRequest());
         var rental = mapper.forRequest().map(request, Rental.class);
         rental.setId(UUID.randomUUID());
         rental.setDailyPrice(getTotalPrice(rental));

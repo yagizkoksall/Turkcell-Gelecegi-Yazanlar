@@ -1,5 +1,6 @@
 package com.example.rentalservice.business.dto.requests;
 
+import com.example.commonpackage.utils.dto.CreateRentalPaymentRequest;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,8 @@ public class CreateRentalRequest {
     @Min(1)
     private int rentedForDays;
     // TODO: Card Information
+    private CreateRentalPaymentRequest rentalPaymentRequest;
+
 }
 
 

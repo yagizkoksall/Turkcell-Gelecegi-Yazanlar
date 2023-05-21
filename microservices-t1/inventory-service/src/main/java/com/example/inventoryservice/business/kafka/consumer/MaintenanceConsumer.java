@@ -1,5 +1,7 @@
 package com.example.inventoryservice.business.kafka.consumer;
 
+import com.example.commonpackage.events.inventory.MaintenanceCreatedEvent;
+import com.example.commonpackage.events.inventory.MaintenanceDeletedEvent;
 import com.example.commonpackage.events.inventory.RentalCreatedEvent;
 import com.example.commonpackage.events.inventory.RentalDeletedEvent;
 import com.example.inventoryservice.business.abstracts.CarService;
@@ -19,7 +21,7 @@ public class MaintenanceConsumer {
             topics = "maintenance-created",
             groupId = "inventory-maintenance-create"
     )
-    public void consume(RentalCreatedEvent event) {
+    public void consume(MaintenanceCreatedEvent event) {
         // changer car state
         service.changeStateByCarId(State.MAINTENANCE, event.getCarId());
         log.info("Maintenance created event consumed {}", event);
@@ -28,7 +30,7 @@ public class MaintenanceConsumer {
             topics = "maintenance-deleted",
             groupId = "inventory-maintenance-delete"
     )
-    public void consume(RentalDeletedEvent event) {
+    public void consume(MaintenanceDeletedEvent event) {
         // changer car state
         service.changeStateByCarId(State.AVAILABLE, event.getCarId());
         log.info("Maintenance deleted event consumed {}", event);

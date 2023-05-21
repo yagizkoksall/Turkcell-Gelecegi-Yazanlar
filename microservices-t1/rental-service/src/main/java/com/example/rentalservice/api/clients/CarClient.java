@@ -10,7 +10,8 @@ import java.util.UUID;
 
 @FeignClient(name = "INVENTORY-SERVICE", fallback = CarClientFallback.class)
 public interface CarClient {
-    @GetMapping(value = "/api/cars/check-car-available/{carId}")
+
     @Retry(name="retry-rental")
+    @GetMapping(value = "/api/cars/check-car-available/{carId}")
     ClientResponse checkIfCarAvailable(@PathVariable UUID carId);
 }
