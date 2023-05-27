@@ -6,15 +6,13 @@ import com.example.inventoryservice.business.dto.requests.create.CreateCarReques
 import com.example.inventoryservice.business.dto.requests.update.UpdateCarRequest;
 import com.example.inventoryservice.business.dto.responses.create.CreateCarResponse;
 import com.example.inventoryservice.business.dto.responses.get.GetAllCarsResponse;
-import com.example.inventoryservice.business.dto.responses.get.GetCarResponse;
+import com.example.commonpackage.utils.dto.GetCarResponse;
 import com.example.inventoryservice.business.dto.responses.update.UpdateCarResponse;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.rmi.server.UID;
 import java.util.List;
 import java.util.UUID;
 

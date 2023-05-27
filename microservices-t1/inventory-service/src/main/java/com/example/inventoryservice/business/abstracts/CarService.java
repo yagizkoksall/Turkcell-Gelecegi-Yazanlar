@@ -5,9 +5,9 @@ import com.example.inventoryservice.business.dto.requests.create.CreateCarReques
 import com.example.inventoryservice.business.dto.requests.update.UpdateCarRequest;
 import com.example.inventoryservice.business.dto.responses.create.CreateCarResponse;
 import com.example.inventoryservice.business.dto.responses.get.GetAllCarsResponse;
-import com.example.inventoryservice.business.dto.responses.get.GetCarResponse;
+import com.example.commonpackage.utils.dto.GetCarResponse;
 import com.example.inventoryservice.business.dto.responses.update.UpdateCarResponse;
-import com.example.inventoryservice.entities.enums.State;
+import com.example.commonpackage.utils.enums.State;
 
 import java.util.List;
 import java.util.UUID;

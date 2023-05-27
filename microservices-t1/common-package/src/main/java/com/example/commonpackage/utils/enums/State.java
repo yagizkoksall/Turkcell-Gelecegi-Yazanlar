@@ -1,4 +1,4 @@
-package com.example.inventoryservice.entities.enums;
+package com.example.commonpackage.utils.enums;
 
 public enum
 State {

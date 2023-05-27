@@ -20,4 +20,8 @@ public class Paths {
     public static final class Maintenance{
         public static final String MaintenanceBasePackage = "com.example.maintenanceservice";
     }
+
+    public static final class Invoice{
+        public static final String InvoiceBasePackage = "com.example.invoiceservice";
+    }
 }

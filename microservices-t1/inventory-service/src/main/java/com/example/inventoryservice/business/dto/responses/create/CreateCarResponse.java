@@ -1,8 +1,6 @@
 package com.example.inventoryservice.business.dto.responses.create;
 
-import com.example.inventoryservice.entities.enums.State;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
+import com.example.commonpackage.utils.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

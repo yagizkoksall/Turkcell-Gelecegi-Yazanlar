@@ -1,7 +1,7 @@
 package com.example.inventoryservice.repository;
 
 import com.example.inventoryservice.entities.Car;
-import com.example.inventoryservice.entities.enums.State;
+import com.example.commonpackage.utils.enums.State;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ElasticsearchConfiguration">
+    <option name="clusterConfigurations">
+      <map>
+        <entry key="54a54606-7f33-4cc9-9526-ab001f48e77c">
+          <value>
+            <X>
+              <option name="id" value="54a54606-7f33-4cc9-9526-ab001f48e77c" />
+              <option name="label" value="@localhost" />
+              <option name="url" value="http://localhost:9200" />
+              <option name="version" value="1" />
+            </X>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="requestHistory">
+      <map>
+        <entry key="54a54606-7f33-4cc9-9526-ab001f48e77c" value="[{&quot;path&quot;:&quot;/id/_search&quot;,&quot;body&quot;:&quot;{\n  \&quot;from\&quot;: 0,\n  \&quot;size\&quot;: 50,\n  \&quot;query\&quot;: {\n    \&quot;match_all\&quot;: {}\n  }\n}&quot;,&quot;method&quot;:&quot;GET&quot;}]" />
+      </map>
+    </option>
+    <option name="version" value="1" />
+  </component>
+</project>

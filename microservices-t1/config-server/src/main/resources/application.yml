@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        default-label: master
+        git:
+          uri:  https://github.com/yagizkoksall/config-server-t1
+server:
+  port: 8888
+
+
+

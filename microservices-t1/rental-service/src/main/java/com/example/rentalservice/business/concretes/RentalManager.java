@@ -1,10 +1,13 @@
 package com.example.rentalservice.business.concretes;
 
 
+import com.example.commonpackage.events.inventory.InvoiceCreatedEvent;
 import com.example.commonpackage.events.inventory.RentalCreatedEvent;
 import com.example.commonpackage.events.inventory.RentalDeletedEvent;
+import com.example.commonpackage.utils.dto.GetCarResponse;
 import com.example.commonpackage.utils.kafka.producer.KafkaProducer;
 import com.example.commonpackage.utils.mappers.ModelMapperService;
+import com.example.rentalservice.api.clients.CarClient;
 import com.example.rentalservice.business.abstracts.RentalService;
 import com.example.rentalservice.business.dto.requests.CreateRentalRequest;
 import com.example.rentalservice.business.dto.requests.UpdateRentalRequest;
@@ -29,6 +32,7 @@ public class RentalManager implements RentalService {
     private final RentalRepository repository;
     private final ModelMapperService mapper;
     private final RentalBusinessRules rules;
+    private final CarClient carClient;
     private final KafkaProducer producer;
 
 
@@ -57,11 +61,17 @@ public class RentalManager implements RentalService {
         rules.ensureCarIsAvailable(request.getCarId());
         // * araç müsait mi değil mi kontrol - id
         rules.processRentalPayment(request.getRentalPaymentRequest());
+
+        var car = carClient.getById(request.getCarId());
+
         var rental = mapper.forRequest().map(request, Rental.class);
+
         rental.setId(UUID.randomUUID());
         rental.setDailyPrice(getTotalPrice(rental));
         rental.setRentedAt(LocalDate.now());
         repository.save(rental);
+        sendKafkaInvoiceCreatedEvent(rental,car,request.getRentalPaymentRequest().getCardHolder());
+
         sendKafkaRentalCreatedEvent(request.getCarId());
         var response = mapper.forResponse().map(rental, CreateRentalResponse.class);
 
@@ -69,7 +79,7 @@ public class RentalManager implements RentalService {
     }
 
     private void sendKafkaRentalCreatedEvent(UUID carId) {
-        producer.sendMessage(new RentalCreatedEvent(carId),"rental-created");
+        producer.sendMessage(new RentalCreatedEvent(carId), "rental-created");
     }
 
     @Override
@@ -92,11 +102,29 @@ public class RentalManager implements RentalService {
 
     private void sendKafkaRentalDeletedEvent(UUID id) {
         var carId = repository.findById(id).orElseThrow().getCarId();
-        producer.sendMessage(new RentalDeletedEvent(carId),"rental-deleted");
+        producer.sendMessage(new RentalDeletedEvent(carId), "rental-deleted");
+    }
+
+
+    private void sendKafkaInvoiceCreatedEvent(Rental rental, GetCarResponse carResponse, String cardHolder){
+        InvoiceCreatedEvent invoiceCreatedEvent = new InvoiceCreatedEvent();
+        invoiceCreatedEvent.setCardHolder(cardHolder);
+        invoiceCreatedEvent.setModelName(carResponse.getModelName());
+        invoiceCreatedEvent.setBrandName(carResponse.getBrandName());
+        invoiceCreatedEvent.setPlate(carResponse.getPlate());
+        invoiceCreatedEvent.setModelYear(carResponse.getModelYear());
+        invoiceCreatedEvent.setDailyPrice(rental.getDailyPrice());
+        invoiceCreatedEvent.setTotalPrice(rental.getTotalPrice());
+        invoiceCreatedEvent.setRentedForDays(rental.getRentedForDays());
+        invoiceCreatedEvent.setRentedAt(LocalDateTime.now());
+
+        producer.sendMessage(invoiceCreatedEvent,"invoice-created");
     }
 
     private double getTotalPrice(Rental rental) {
         return rental.getDailyPrice() * rental.getRentedForDays();
     }
+
+
 
 }

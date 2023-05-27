@@ -1,6 +1,6 @@
 package com.example.inventoryservice.business.dto.responses.get;
 
-import com.example.inventoryservice.entities.enums.State;
+import com.example.commonpackage.utils.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

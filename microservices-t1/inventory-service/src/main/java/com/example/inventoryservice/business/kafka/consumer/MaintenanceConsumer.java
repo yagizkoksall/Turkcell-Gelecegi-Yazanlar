@@ -2,10 +2,8 @@ package com.example.inventoryservice.business.kafka.consumer;
 
 import com.example.commonpackage.events.inventory.MaintenanceCreatedEvent;
 import com.example.commonpackage.events.inventory.MaintenanceDeletedEvent;
-import com.example.commonpackage.events.inventory.RentalCreatedEvent;
-import com.example.commonpackage.events.inventory.RentalDeletedEvent;
 import com.example.inventoryservice.business.abstracts.CarService;
-import com.example.inventoryservice.entities.enums.State;
+import com.example.commonpackage.utils.enums.State;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
