@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31d539f3-dffc-4aa1-ac06-485bb90df85c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/com/example/commonpackage/configuration/security/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/com/example/commonpackage/utils/constants/Roles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common-package/src/main/java/com/example/commonpackage/utils/security/KeycloakJwtRoleConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory-service/src/main/java/com/example/inventoryservice/api/controllers/CarsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/inventory-service/src/main/java/com/example/inventoryservice/api/controllers/CarsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +56,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/yagiz/OneDrive/Masaüstü/config-server-t1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yagiz/OneDrive/Masaüstü/leetcode-practices/src/practices&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -228,6 +232,9 @@
       <workItem from="1685378518259" duration="2807000" />
       <workItem from="1685389138752" duration="173000" />
       <workItem from="1685389321070" duration="282000" />
+      <workItem from="1685436121231" duration="55000" />
+      <workItem from="1685775140500" duration="358000" />
+      <workItem from="1685775966919" duration="6785000" />
     </task>
     <servers />
   </component>
