@@ -33,8 +33,8 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.example</groupId>
-			<artifactId>common-package</artifactId>
+			<groupId>io.github.yagizkoksall</groupId>
+			<artifactId>common-package-t1</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>

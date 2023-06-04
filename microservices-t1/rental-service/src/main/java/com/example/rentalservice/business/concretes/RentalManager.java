@@ -58,8 +58,8 @@ public class RentalManager implements RentalService {
 
     @Override
     public CreateRentalResponse add(CreateRentalRequest request) {
-        rules.ensureCarIsAvailable(request.getCarId());
         // * araç müsait mi değil mi kontrol - id
+        rules.ensureCarIsAvailable(request.getCarId());
         rules.processRentalPayment(request.getRentalPaymentRequest());
 
         var car = carClient.getById(request.getCarId());
